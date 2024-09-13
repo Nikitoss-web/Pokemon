@@ -20,24 +20,12 @@
                                 <rect key="frame" x="0.0" y="69" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="5lq-Sh-Lw1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainCellIdentifier" rowHeight="68" id="5lq-Sh-Lw1" customClass="TableViewCell">
                                         <rect key="frame" x="0.0" y="50" width="393" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5lq-Sh-Lw1" id="FDd-4S-duD">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5q-xK-mhT">
-                                                    <rect key="frame" x="30" y="11" width="114" height="46"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="w5q-xK-mhT" firstAttribute="leading" secondItem="FDd-4S-duD" secondAttribute="leading" constant="30" id="Eeo-ev-oR6"/>
-                                                <constraint firstItem="w5q-xK-mhT" firstAttribute="top" secondItem="FDd-4S-duD" secondAttribute="top" constant="11" id="PhL-3L-pEe"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -52,10 +40,13 @@
                             <constraint firstItem="3pG-9n-hk6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wf1-gp-jkz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3pG-9n-hk6" id="rLO-zO-cIW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="291" y="-21"/>
         </scene>
     </scenes>
     <resources>
