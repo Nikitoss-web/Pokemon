@@ -1,22 +1,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var namePokemon: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
-
+    let viewModel = ViewControllerModel(url: APINamePokemon())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        viewModel.fetchUrlPokemon()
+        bind()
+    }
+    
+    private func bind() {
+        viewModel.testLoaded = {
+            self.tableView.reloadData()
+        }
     }
 }
 
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.urlCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.MainCellIdentifier.rawValue , for: indexPath)
+        cell.textLabel?.text = viewModel.urlName(at: indexPath.row)
         return cell
     }
     
@@ -30,6 +39,6 @@ extension ViewController: UITableViewDataSource{
 //            navigationController?.pushViewController(vc, animated: true)
 //        }
 //    }
-//    
+//
 //}
 

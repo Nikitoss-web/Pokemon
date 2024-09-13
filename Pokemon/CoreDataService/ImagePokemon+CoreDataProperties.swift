@@ -16,7 +16,7 @@ extension ImagePokemon {
         return NSFetchRequest<ImagePokemon>(entityName: "ImagePokemon")
     }
 
-    @NSManaged public var image: Date?
+    @NSManaged public var image: Data?
     @NSManaged public var descriptionPokemon: DescriptionPokemon?
 
 }

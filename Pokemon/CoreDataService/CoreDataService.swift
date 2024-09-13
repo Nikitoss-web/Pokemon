@@ -27,6 +27,21 @@ class CoreDataService{
             self.saveContext()
         }
     }
+    
+    func fetchUrl() -> [String] {
+        let fetchUrlPokemons: NSFetchRequest<UrlPokemon> = UrlPokemon.fetchRequest()
+        
+        do {
+            let urlPokemon = try context.fetch(fetchUrlPokemons)
+            let pokemonUrl = urlPokemon.compactMap{$0.name }
+            return pokemonUrl
+        } catch {
+            print("Failed to fetch  names: \(error)")
+            return []
+        }
+    }
+    
+    
     func saveDecriptionPokemon(with decriptions: [DecriptionPokemonStruct]) {
         context.perform { [weak self] in
             guard let self = self else { return }
@@ -41,7 +56,18 @@ class CoreDataService{
             self.saveContext()
         }
     }
-    
+    func fetchDescriptions() -> [DescriptionPokemon]? {
+        let fetchRequest: NSFetchRequest<DescriptionPokemon> = DescriptionPokemon.fetchRequest()
+        
+        do {
+            let descriptions = try context.fetch(fetchRequest)
+            return descriptions
+        } catch {
+            print("Failed to fetch descriptions: \(error)")
+            return nil
+        }
+    }
+
     func saveImagePokemon(with images: [ImagePokemonStruct]) {
         context.perform { [weak self] in
             guard let self = self else { return }
@@ -50,6 +76,17 @@ class CoreDataService{
                 newImage.image = image.image
             }
             self.saveContext()
+        }
+    }
+    func fetchImage() -> [UrlPokemon]? {
+        let fetchImage: NSFetchRequest<UrlPokemon> = UrlPokemon.fetchRequest()
+        
+        do {
+            let images = try context.fetch(fetchImage)
+            return images
+        } catch {
+            print("Failed to fetch image: \(error)")
+            return nil
         }
     }
 

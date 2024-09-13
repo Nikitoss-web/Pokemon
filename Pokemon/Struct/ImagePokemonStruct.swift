@@ -1,5 +1,5 @@
 import Foundation
 
-struct ImagePokemonStruct: Encodable{
-    var image: Date?
+struct ImagePokemonStruct: Decodable{
+    var image: Data?
 }

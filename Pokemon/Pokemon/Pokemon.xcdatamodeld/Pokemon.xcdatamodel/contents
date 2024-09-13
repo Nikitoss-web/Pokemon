@@ -10,7 +10,7 @@
         <relationship name="urlPokemon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UrlPokemon" inverseName="descriptionPokemon" inverseEntity="UrlPokemon"/>
     </entity>
     <entity name="ImagePokemon" representedClassName="ImagePokemon" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <relationship name="descriptionPokemon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DescriptionPokemon" inverseName="imagePokemon" inverseEntity="DescriptionPokemon"/>
     </entity>
     <entity name="UrlPokemon" representedClassName="UrlPokemon" syncable="YES">
