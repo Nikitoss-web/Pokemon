@@ -33,6 +33,12 @@
 		447B69802C94C22C004776B8 /* EnumAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B697F2C94C22C004776B8 /* EnumAPI.swift */; };
 		447B69822C94C801004776B8 /* ViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B69812C94C801004776B8 /* ViewControllerModel.swift */; };
 		447B69842C94C96B004776B8 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B69832C94C96B004776B8 /* NetworkMonitor.swift */; };
+		447B69872C94DB8D004776B8 /* InformationPokemon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 447B69862C94DB8D004776B8 /* InformationPokemon.storyboard */; };
+		447B69892C94DBB5004776B8 /* InformationPokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B69882C94DBB5004776B8 /* InformationPokemonView.swift */; };
+		447B698B2C94DBBF004776B8 /* InformationPokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B698A2C94DBBF004776B8 /* InformationPokemonViewModel.swift */; };
+		447B698D2C94DD7C004776B8 /* EnumScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B698C2C94DD7C004776B8 /* EnumScreen.swift */; };
+		447B698F2C94DFA6004776B8 /* APIDecription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B698E2C94DFA6004776B8 /* APIDecription.swift */; };
+		447B69912C94E6E1004776B8 /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B69902C94E6E1004776B8 /* APIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,12 @@
 		447B697F2C94C22C004776B8 /* EnumAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAPI.swift; sourceTree = "<group>"; };
 		447B69812C94C801004776B8 /* ViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModel.swift; sourceTree = "<group>"; };
 		447B69832C94C96B004776B8 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		447B69862C94DB8D004776B8 /* InformationPokemon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationPokemon.storyboard; sourceTree = "<group>"; };
+		447B69882C94DBB5004776B8 /* InformationPokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPokemonView.swift; sourceTree = "<group>"; };
+		447B698A2C94DBBF004776B8 /* InformationPokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPokemonViewModel.swift; sourceTree = "<group>"; };
+		447B698C2C94DD7C004776B8 /* EnumScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumScreen.swift; sourceTree = "<group>"; };
+		447B698E2C94DFA6004776B8 /* APIDecription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDecription.swift; sourceTree = "<group>"; };
+		447B69902C94E6E1004776B8 /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +129,7 @@
 				447B69762C94AFF1004776B8 /* Enum */,
 				447B696D2C94AE96004776B8 /* Struct */,
 				447B696C2C94ADCC004776B8 /* CoreDataService */,
+				447B69852C94DB4F004776B8 /* InformationPokemon */,
 				447B69282C94A221004776B8 /* Pokemon */,
 				447B69422C94A223004776B8 /* PokemonTests */,
 				447B694C2C94A223004776B8 /* PokemonUITests */,
@@ -198,8 +211,21 @@
 			children = (
 				447B695C2C94A54E004776B8 /* EnumPokemon.swift */,
 				447B697F2C94C22C004776B8 /* EnumAPI.swift */,
+				447B698C2C94DD7C004776B8 /* EnumScreen.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		447B69852C94DB4F004776B8 /* InformationPokemon */ = {
+			isa = PBXGroup;
+			children = (
+				447B698E2C94DFA6004776B8 /* APIDecription.swift */,
+				447B69902C94E6E1004776B8 /* APIImage.swift */,
+				447B69862C94DB8D004776B8 /* InformationPokemon.storyboard */,
+				447B69882C94DBB5004776B8 /* InformationPokemonView.swift */,
+				447B698A2C94DBBF004776B8 /* InformationPokemonViewModel.swift */,
+			);
+			path = InformationPokemon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +334,7 @@
 			files = (
 				447B69362C94A222004776B8 /* Assets.xcassets in Resources */,
 				447B69392C94A222004776B8 /* Base in Resources */,
+				447B69872C94DB8D004776B8 /* InformationPokemon.storyboard in Resources */,
 				447B69312C94A221004776B8 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,11 +364,13 @@
 				447B69342C94A221004776B8 /* Pokemon.xcdatamodeld in Sources */,
 				447B695D2C94A54E004776B8 /* EnumPokemon.swift in Sources */,
 				447B69782C94C09F004776B8 /* APINamePokemon.swift in Sources */,
+				447B69912C94E6E1004776B8 /* APIImage.swift in Sources */,
 				447B696B2C94ADAF004776B8 /* CoreDataService.swift in Sources */,
 				447B69712C94AF31004776B8 /* DecriptionPokemonStruct.swift in Sources */,
 				447B69662C94ADA6004776B8 /* DescriptionPokemon+CoreDataClass.swift in Sources */,
 				447B69802C94C22C004776B8 /* EnumAPI.swift in Sources */,
 				447B69672C94ADA6004776B8 /* DescriptionPokemon+CoreDataProperties.swift in Sources */,
+				447B698B2C94DBBF004776B8 /* InformationPokemonViewModel.swift in Sources */,
 				447B69682C94ADA6004776B8 /* UrlPokemon+CoreDataClass.swift in Sources */,
 				447B696F2C94AEC2004776B8 /* UrlPokemonStruct.swift in Sources */,
 				447B69692C94ADA6004776B8 /* UrlPokemon+CoreDataProperties.swift in Sources */,
@@ -349,10 +378,13 @@
 				447B69822C94C801004776B8 /* ViewControllerModel.swift in Sources */,
 				447B697A2C94C139004776B8 /* ErrorAPI.swift in Sources */,
 				447B697D2C94C1CC004776B8 /* ImagePokemon+CoreDataClass.swift in Sources */,
+				447B698F2C94DFA6004776B8 /* APIDecription.swift in Sources */,
 				447B697E2C94C1CC004776B8 /* ImagePokemon+CoreDataProperties.swift in Sources */,
 				447B69842C94C96B004776B8 /* NetworkMonitor.swift in Sources */,
 				447B692A2C94A221004776B8 /* AppDelegate.swift in Sources */,
+				447B69892C94DBB5004776B8 /* InformationPokemonView.swift in Sources */,
 				447B692C2C94A221004776B8 /* SceneDelegate.swift in Sources */,
+				447B698D2C94DD7C004776B8 /* EnumScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

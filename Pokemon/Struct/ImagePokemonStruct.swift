@@ -1,5 +1,5 @@
-import Foundation
-
-struct ImagePokemonStruct: Decodable{
-    var image: Data?
-}
+//import Foundation
+//
+//struct ImagePokemonStruct: Decodable{
+//    var image: Data?
+//}

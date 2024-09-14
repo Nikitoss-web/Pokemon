@@ -42,39 +42,41 @@ class CoreDataService{
     }
     
     
-    func saveDecriptionPokemon(with decriptions: [DecriptionPokemonStruct]) {
+    func saveDecriptionPokemon(with decriptions: DecriptionPokemonResponse) {
         context.perform { [weak self] in
             guard let self = self else { return }
-            for decription in decriptions {
                 let newDecription = DescriptionPokemon(context: self.context)
-                newDecription.name = decription.name
-                newDecription.url_photo = decription.url_photo
-                newDecription.types = decription.types
-                newDecription.weight = decription.weight
-                newDecription.height = decription.height
-            }
+            newDecription.name = decriptions.name
+            newDecription.url_photo = ""
+            let typesNames = decriptions.types.map { $0.type.name }.joined(separator: ", ")
+                   newDecription.types = typesNames
+                newDecription.weight = decriptions.weight
+                newDecription.height = decriptions.height
+            
             self.saveContext()
         }
     }
-    func fetchDescriptions() -> [DescriptionPokemon]? {
+    func fetchDescription(byName name: String) -> DescriptionPokemon? {
         let fetchRequest: NSFetchRequest<DescriptionPokemon> = DescriptionPokemon.fetchRequest()
         
+        // Добавляем предикат для фильтрации по имени
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
         do {
+            // Выполняем запрос и берем первый результат, если он существует
             let descriptions = try context.fetch(fetchRequest)
-            return descriptions
+            return descriptions.first
         } catch {
-            print("Failed to fetch descriptions: \(error)")
+            print("Failed to fetch description by name: \(error)")
             return nil
         }
     }
 
-    func saveImagePokemon(with images: [ImagePokemonStruct]) {
+    func saveImagePokemon(with images: Data) {
         context.perform { [weak self] in
             guard let self = self else { return }
-            for image in images {
                 let newImage = ImagePokemon(context: self.context)
-                newImage.image = image.image
-            }
+                newImage.image = images
             self.saveContext()
         }
     }

@@ -7,6 +7,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         viewModel.fetchUrlPokemon()
         bind()
     }
@@ -31,14 +32,14 @@ extension ViewController: UITableViewDataSource{
     
 }
 
-//extension ViewController: UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: Screen.mainStoryboard.rawValue, bundle: nil)
-//        if let vc = storyboard.instantiateViewController(withIdentifier: String(describing: SettingsVС.self)) as? SettingsVС {
-//            viewModel.settingsVCDelegate(objectId: viewModel.objectId(at: indexPath.row), testName:  viewModel.testName(at: indexPath.row), vcc: vc.viewModel)
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-//
-//}
+extension ViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: EnumScreen.informationPokemon.rawValue, bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: String(describing: InformationPokemonView.self)) as? InformationPokemonView {
+            viewModel.settingsVCDelegate(urls: viewModel.urlID(at: indexPath.row), names: viewModel.urlName(at: indexPath.row), vc: vc.viewModel)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
+}
 

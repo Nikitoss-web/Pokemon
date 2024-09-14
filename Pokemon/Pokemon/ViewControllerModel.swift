@@ -1,7 +1,14 @@
 import Foundation
 
+protocol SettingsVCDelegate: AnyObject {
+    
+    func settingsVCDidUpdateData(id_pokemon: String?, name: String?)
+}
+
 class ViewControllerModel {
     var testLoaded: (() -> Void)?
+    var id_pokemon: String?
+    var name: String?
    private let networkMonitor = NetworkMonitor()
     private let url: NamePokemon
       private var fetchedPokemons: [UrlPokemonStruct] = []
@@ -9,6 +16,7 @@ class ViewControllerModel {
     init(url: NamePokemon) {
          self.url = url
      }
+    
     var urls: [UrlPokemonStruct] = [] {
         didSet{
             testLoaded?()
@@ -17,6 +25,10 @@ class ViewControllerModel {
     var urlCount: Int {
         fetchedPokemons.count
     }
+    func urlID(at index: Int) -> String {
+        return fetchedPokemons[index].url
+    }
+
     
     func urlName(at index: Int) -> String {
         return fetchedPokemons[index].name
@@ -43,5 +55,18 @@ class ViewControllerModel {
             self.fetchedPokemons = urls.map { UrlPokemonStruct(name: $0, url: "")}
             self.testLoaded?()
         }
+    }
+    
+    func settingsVCDelegate(urls: String?, names: String?, vc: InformationPokemonViewModel){
+        vc.id_pokemon = urls
+        vc.name = names
+        vc.delegate = self
+    }
+    
+}
+extension ViewControllerModel: SettingsVCDelegate{
+    func settingsVCDidUpdateData(id_pokemon: String?, name: String?){
+        self.id_pokemon = id_pokemon
+        self.name = name
     }
 }
