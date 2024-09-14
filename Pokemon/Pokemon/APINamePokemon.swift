@@ -7,7 +7,7 @@ protocol NamePokemon {
 final class APINamePokemon: NamePokemon  {
     
     func viewResultName( completion: @escaping (Result<[UrlPokemonStruct]?, ErrorAPI>) -> Void) {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon")!
+        let url = URL(string: EnumAPI.urlPokemon.rawValue)!
         var request = URLRequest(url: url)
         request.httpMethod = EnumAPI.httpMethodGet.rawValue
         request.addValue(EnumAPI.application.rawValue, forHTTPHeaderField: EnumAPI.content.rawValue)

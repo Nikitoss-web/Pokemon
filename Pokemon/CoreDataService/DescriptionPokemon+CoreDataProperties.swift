@@ -2,7 +2,7 @@
 //  DescriptionPokemon+CoreDataProperties.swift
 //  Pokemon
 //
-//  Created by НИКИТА ПЕСНЯК on 13.09.24.
+//  Created by НИКИТА ПЕСНЯК on 14.09.24.
 //
 //
 
@@ -21,6 +21,7 @@ extension DescriptionPokemon {
     @NSManaged public var weight: Double
     @NSManaged public var height: Double
     @NSManaged public var url_photo: String?
+    @NSManaged public var id: Int16
     @NSManaged public var urlPokemon: UrlPokemon?
     @NSManaged public var imagePokemon: ImagePokemon?
 

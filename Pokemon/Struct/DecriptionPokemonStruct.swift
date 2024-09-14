@@ -4,7 +4,6 @@ struct DecriptionPokemonResponse: Decodable{
     var name: String
     var weight: Double
     var types: [TypeSlot]
-    
 }
 
 struct PokemonType: Decodable {
@@ -17,7 +16,7 @@ struct TypeSlot: Decodable {
     var type: PokemonType
 }
 
-struct newStruct{
+struct newDecription{
     var height: Double
     var id: Int
     var name: String

@@ -7,49 +7,29 @@ class InformationPokemonView: UIViewController{
     @IBOutlet weak var typesLable: UILabel!
     @IBOutlet weak var weightLable: UILabel!
     @IBOutlet weak var heightLable: UILabel!
-    let viewModel = InformationPokemonViewModel()
-    private var c = APIDecription()
-    private var a = APIImage()
-    var fetchedDecription: DecriptionPokemonResponse?
+    let viewModel = InformationPokemonViewModel(images: APIImage(), descriptions: APIDecription())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.updateData()
-        viewModel.fetchDecriptionPokemon()
-        result()
-        
-        
-        a.viewResultImage(url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png") { [weak self] (result: Result<Data?, ErrorAPI>) in
+        fetchData()
+    }
+    
+    private func fetchData() {
+        viewModel.checkingConectionDecription { [weak self] in
             DispatchQueue.main.async {
-                switch result {
-                case .success(let imageData):
-                    if let imageData = imageData {
-                        let image = UIImage(data: imageData)
-                        self?.photo.image = image
-                        print("Изображение успешно загружено")
-                    } else {
-                        print("Изображение не найдено")
-                    }
-                  
-                case .failure(let error):
-                    print("Ошибка при получении результатов: \(error)")
-                }
+                self?.updateUI()
+                self?.viewModel.outputImage(photo: self?.photo ?? UIImageView())
             }
         }
-
+    }
     
-        
-        
-        
+    private func updateUI() {
+        if let result = viewModel.outputResult() {
+            nameLable.text = result.name
+            heightLable.text = String(result.height)
+            weightLable.text = String(result.weight)
+            typesLable.text = result.types
         }
-    func result(){
-        nameLable.text = viewModel.outputResult()?.name
-        heightLable.text = String(viewModel.outputResult()?.height ?? 0)
-        weightLable.text = String(viewModel.outputResult()?.weight ?? 0)
-        typesLable.text = viewModel.outputResult()?.types
-        
-
     }
-    }
-
-
+    
+}

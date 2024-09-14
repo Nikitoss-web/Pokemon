@@ -45,25 +45,25 @@ class CoreDataService{
     func saveDecriptionPokemon(with decriptions: DecriptionPokemonResponse) {
         context.perform { [weak self] in
             guard let self = self else { return }
-                let newDecription = DescriptionPokemon(context: self.context)
+            let newDecription = DescriptionPokemon(context: self.context)
             newDecription.name = decriptions.name
+            newDecription.id = Int16(decriptions.id)
             newDecription.url_photo = ""
             let typesNames = decriptions.types.map { $0.type.name }.joined(separator: ", ")
-                   newDecription.types = typesNames
-                newDecription.weight = decriptions.weight
-                newDecription.height = decriptions.height
+            newDecription.types = typesNames
+            newDecription.weight = decriptions.weight
+            newDecription.height = decriptions.height
             
             self.saveContext()
         }
     }
+    
     func fetchDescription(byName name: String) -> DescriptionPokemon? {
         let fetchRequest: NSFetchRequest<DescriptionPokemon> = DescriptionPokemon.fetchRequest()
         
-        // Добавляем предикат для фильтрации по имени
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         do {
-            // Выполняем запрос и берем первый результат, если он существует
             let descriptions = try context.fetch(fetchRequest)
             return descriptions.first
         } catch {
@@ -71,27 +71,30 @@ class CoreDataService{
             return nil
         }
     }
-
+    
     func saveImagePokemon(with images: Data) {
         context.perform { [weak self] in
             guard let self = self else { return }
-                let newImage = ImagePokemon(context: self.context)
-                newImage.image = images
+            let newImage = ImagePokemon(context: self.context)
+            newImage.image = images
             self.saveContext()
         }
     }
-    func fetchImage() -> [UrlPokemon]? {
-        let fetchImage: NSFetchRequest<UrlPokemon> = UrlPokemon.fetchRequest()
+    
+    func fetchImage() -> Data? {
+        let fetchImage: NSFetchRequest<ImagePokemon> = ImagePokemon.fetchRequest()
         
         do {
             let images = try context.fetch(fetchImage)
-            return images
+            if let imagePokemon = images.first {
+                return imagePokemon.image
+            }
         } catch {
             print("Failed to fetch image: \(error)")
-            return nil
         }
+        return nil
     }
-
+    
     private func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

@@ -5,16 +5,12 @@ protocol ImageResult {
 }
 
 final class APIImage: ImageResult {
-
+    
     func viewResultImage(url: String, completion: @escaping (Result<Data?, ErrorAPI>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
+        let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = EnumAPI.httpMethodGet.rawValue
-        
+        request.addValue(EnumAPI.application.rawValue, forHTTPHeaderField: EnumAPI.content.rawValue)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(.decodingError(error)))
@@ -24,8 +20,6 @@ final class APIImage: ImageResult {
                 completion(.failure(.noData))
                 return
             }
-            
-           
             completion(.success(data))
             CoreDataService.shared.saveImagePokemon(with: data)
         }

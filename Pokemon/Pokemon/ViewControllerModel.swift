@@ -9,13 +9,13 @@ class ViewControllerModel {
     var testLoaded: (() -> Void)?
     var id_pokemon: String?
     var name: String?
-   private let networkMonitor = NetworkMonitor()
+    private let networkMonitor = NetworkMonitor()
     private let url: NamePokemon
-      private var fetchedPokemons: [UrlPokemonStruct] = []
+    private var fetchedPokemons: [UrlPokemonStruct] = []
     
     init(url: NamePokemon) {
-         self.url = url
-     }
+        self.url = url
+    }
     
     var urls: [UrlPokemonStruct] = [] {
         didSet{
@@ -28,12 +28,12 @@ class ViewControllerModel {
     func urlID(at index: Int) -> String {
         return fetchedPokemons[index].url
     }
-
+    
     
     func urlName(at index: Int) -> String {
         return fetchedPokemons[index].name
     }
-        
+    
     func fetchUrlPokemon(){
         if networkMonitor.isInternetAvailable() {
             url.viewResultName() { [weak self] (result: Result<[UrlPokemonStruct]?, ErrorAPI>) in

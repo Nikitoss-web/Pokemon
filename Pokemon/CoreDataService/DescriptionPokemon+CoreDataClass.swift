@@ -2,7 +2,7 @@
 //  DescriptionPokemon+CoreDataClass.swift
 //  Pokemon
 //
-//  Created by НИКИТА ПЕСНЯК on 13.09.24.
+//  Created by НИКИТА ПЕСНЯК on 14.09.24.
 //
 //
 

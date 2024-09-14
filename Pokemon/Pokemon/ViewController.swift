@@ -40,6 +40,6 @@ extension ViewController: UITableViewDelegate{
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    
 }
 
